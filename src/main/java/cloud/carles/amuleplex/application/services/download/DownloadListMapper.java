@@ -21,7 +21,7 @@ public class DownloadListMapper {
                 .collect(Collectors.toList());
 
         Pattern firstLinePattern = Pattern.compile("(\\w*)\\s+(.*)");
-        Pattern secondLinePattern = Pattern.compile(".*\\[(.*)\\%\\]\\s*(\\d*)\\/\\s+(\\d*).+\\s\\-\\s(.*)\\s\\-\\s(.*)\\s\\-\\s(.*)\\s\\-\\s(.*)");
+        Pattern secondLinePattern = Pattern.compile(".*\\[(.*)\\%\\]\\s*(\\d*)\\/\\s+(\\d*).+\\s\\((\\d*)\\)\\s\\-\\s(.*)\\s\\-\\s(.*)\\s\\-\\s(.*)\\s\\-\\s(.*)");
         Pattern secondLinePatternOption2 = Pattern.compile(".*\\[(.*)\\%\\]\\s*(\\d*)\\/\\s+(\\d*).+\\s\\-\\s(.*)\\s\\-\\s(.*)\\s\\-\\s(.*)");
 
         List<DownloadListItemDTO> result = new ArrayList<>();
@@ -41,6 +41,7 @@ public class DownloadListMapper {
                         firstLineMatcher.group(1),
                         firstLineMatcher.group(2),
                         Float.parseFloat(secondLineMatcher.group(1)),
+                        Integer.parseInt(secondLineMatcher.group(4)),
                         Integer.parseInt(secondLineMatcher.group(2)),
                         Integer.parseInt(secondLineMatcher.group(3)),
                         secondLineMatcher.group(4),
@@ -56,6 +57,7 @@ public class DownloadListMapper {
                         firstLineMatcher.group(1),
                         firstLineMatcher.group(2),
                         Float.parseFloat(secondLineMatcherOption2.group(1)),
+                        0,
                         Integer.parseInt(secondLineMatcherOption2.group(2)),
                         Integer.parseInt(secondLineMatcherOption2.group(3)),
                         secondLineMatcherOption2.group(4),

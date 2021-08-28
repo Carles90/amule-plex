@@ -5,7 +5,8 @@ public class DownloadListItemDTO {
     private final String name;
     private final float percent;
     private final int usersSending;
-    private final int totalUsers;
+    private final int usersAvailable;
+    private final int usersTotal;
     private final String status;
     private final String internalFileName;
     private final String priority;
@@ -16,7 +17,8 @@ public class DownloadListItemDTO {
             String name,
             float percent,
             int usersSending,
-            int totalUsers,
+            int usersAvailable,
+            int usersTotal,
             String status,
             String internalFileName,
             String priority,
@@ -26,7 +28,8 @@ public class DownloadListItemDTO {
         this.name = name;
         this.percent = percent;
         this.usersSending = usersSending;
-        this.totalUsers = totalUsers;
+        this.usersAvailable = usersAvailable;
+        this.usersTotal = usersTotal;
         this.status = status;
         this.internalFileName = internalFileName;
         this.priority = priority;
@@ -49,8 +52,12 @@ public class DownloadListItemDTO {
         return usersSending;
     }
 
-    public int getTotalUsers() {
-        return totalUsers;
+    public int getUsersAvailable() {
+        return usersAvailable;
+    }
+
+    public int getUsersTotal() {
+        return usersTotal;
     }
 
     public String getStatus() {
