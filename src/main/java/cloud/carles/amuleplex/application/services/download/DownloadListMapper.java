@@ -44,10 +44,10 @@ public class DownloadListMapper {
                         Integer.parseInt(secondLineMatcher.group(4)),
                         Integer.parseInt(secondLineMatcher.group(2)),
                         Integer.parseInt(secondLineMatcher.group(3)),
-                        secondLineMatcher.group(4),
                         secondLineMatcher.group(5),
                         secondLineMatcher.group(6),
-                        secondLineMatcher.group(7)
+                        secondLineMatcher.group(7),
+                        secondLineMatcher.group(8)
                 ));
             } catch (IllegalStateException e) {
                 Matcher secondLineMatcherOption2 = secondLinePatternOption2.matcher(secondLine);
