@@ -26,7 +26,7 @@ public class DownloadController {
     }
 
     @GetMapping(produces = MediaType.APPLICATION_JSON_VALUE)
-    public String getStatus() throws AmuleCommandException {
+    public String getDownloads() throws AmuleCommandException {
         return GsonContainer.get().toJson(downloadListProvider.provide());
     }
 }
