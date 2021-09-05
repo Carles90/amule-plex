@@ -7,7 +7,6 @@ import org.springframework.stereotype.Service;
 
 import java.io.IOException;
 import java.nio.file.Files;
-import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.nio.file.StandardCopyOption;
 
@@ -17,18 +16,22 @@ public class IncomingFileOrderer {
     private ApplicationProperties properties;
 
     public void order(OrderIncomingDTO request) throws IOException {
+        String destinationPath = getDestinationPath(request);
+
+        Files.createDirectories(Paths.get(destinationPath));
+
         Files.move(
                 Paths.get(properties.getAmuleIncomingDirectory() + "/" + request.getFileName()),
-                this.getDestinationPath(request),
+                Paths.get(destinationPath + "/" + request.getFileName()),
                 StandardCopyOption.REPLACE_EXISTING
         );
     }
 
-    public Path getDestinationPath(OrderIncomingDTO request) {
+    public String getDestinationPath(OrderIncomingDTO request) {
         if (request.getType().equals(OrderIncomingDTO.TYPE_MOVIE)) {
-            return Paths.get(properties.getPlexDirectory() + "/" + properties.getMoviesDirectory());
+            return properties.getPlexDirectory() + "/" + properties.getMoviesDirectory();
         }
 
-        return Paths.get(properties.getPlexDirectory() + "/" + properties.getMoviesDirectory() + "/" + request.getShow());
+        return properties.getPlexDirectory() + "/" + properties.getShowsDirectory() + "/" + request.getShow();
     }
 }

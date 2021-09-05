@@ -1,13 +1,13 @@
 package cloud.carles.amuleplex.application.dto.download;
 
 public class DeleteIncomingDTO {
-    private final String fileName;
-
-    public DeleteIncomingDTO(String fileName) {
-        this.fileName = fileName;
-    }
+    private String fileName;
 
     public String getFileName() {
         return fileName;
+    }
+
+    public void setFileName(String fileName) {
+        this.fileName = fileName;
     }
 }
