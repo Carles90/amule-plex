@@ -20,4 +20,12 @@ public class ApplicationProperties {
     public String getPlexDirectory() {
         return env.getProperty("plex.directory");
     }
+
+    public String getMoviesDirectory() {
+        return env.getProperty("plex.movies.directory");
+    }
+
+    public String getShowsDirectory() {
+        return env.getProperty("plex.shows.directory");
+    }
 }
